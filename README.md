@@ -2,7 +2,9 @@
 
 This fork fixes an issue with touchscreen focus and also enables the Android virtual keyboard (I've no reason to believe this won't work on other OSes), so far it has had limited testing on all `1` Android devices (aka my phone) and a touchscreen laptop running Fedora 35, treat this fork as a WIP, if in doubt use the original [tavuntu/urutora](https://github.com/tavuntu/urutora). 
 
-Note: If these changes are merged upstream this fork will be DELETED!
+Note: If these changes are merged upstream this fork will be DELETED! 
+
+### See [Issues](https://github.com/scawp/urutora-fork/issues/)
 
 # urutora
 
