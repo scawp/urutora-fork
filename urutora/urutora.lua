@@ -135,6 +135,7 @@ function urutora:deactivateByTag(tag)
 end
 
 function urutora:setFocusedNode(node)
+	local show_virtual_keyboard = false
 	for _, v in ipairs(self.nodes) do
 		if utils.isPanel(v) then
 			v:forEach(function (_node)
@@ -144,7 +145,24 @@ function urutora:setFocusedNode(node)
 			v.focused = false
 		end
 	end
-	if node then node.focused = true end
+	if node then 
+		node.focused = true 
+		if node.type == utils.nodeTypes.TEXT then
+			show_virtual_keyboard = true
+		end
+	end
+	self:toggleVirtualKeyboard(show_virtual_keyboard)
+end
+
+urutora.virtual_keyboard = false
+function urutora:toggleVirtualKeyboard(on_off)
+	if on_off and not self.virtual_keyboard then
+		love.keyboard.setTextInput(true)
+		self.virtual_keyboard = true
+	elseif not on_off and self.virtual_keyboard then
+		love.keyboard.setTextInput(false)
+		self.virtual_keyboard = false
+	end
 end
 
 function urutora:draw()
@@ -223,6 +241,9 @@ function urutora:keypressed(k, scancode, isrepeat)
 			scancode = scancode,
 			isrepeat = isrepeat
 		})
+	end
+	if scancode == 'return' then
+		self:toggleVirtualKeyboard(false)
 	end
 end
 
