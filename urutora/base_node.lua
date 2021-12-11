@@ -186,6 +186,8 @@ function base_node:performPressedAction(data)
 	if not self.enabled then return end
 
 	local urutora = data.urutora
+	--TODO: Temp fix for touch, not fully tested
+	self.pointed = self:pointInsideNode(love.mouse.getX() / utils.sx, love.mouse.getY() / utils.sy)
 	if self.pointed then
 		self.pressed = true
 		urutora.focused_node = self
