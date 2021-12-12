@@ -241,9 +241,12 @@ function urutora:keypressed(k, scancode, isrepeat)
 			scancode = scancode,
 			isrepeat = isrepeat
 		})
+		if scancode == 'return' then
+			v.focused = false
+		end
 	end
 	if scancode == 'return' then
-		self:toggleVirtualKeyboard(false)
+		self:toggleVirtualKeyboard(false) --TODO: Fix this
 	end
 end
 
